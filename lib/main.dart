@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rest_api/jsonDataFromAPI.dart';
 
 import 'dataFromApi.dart' show DatafromApi;
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: DatafromApi(),
+      home: DummyApiExample(),
     );
   }
 }

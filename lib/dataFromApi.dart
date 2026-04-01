@@ -45,15 +45,23 @@ class _DatafromApiState extends State<DatafromApi> {
       "name" : "Md Rajib",
       "address" : "Dhaka"
     };
-    var response = await http.get(Uri.parse(url).replace(queryParameters: queryParams));
-    if (response.statusCode == 200) {
+
+    try{
+      var response = await http.get(Uri.parse(url).replace(queryParameters: queryParams));
+      if (response.statusCode == 200) {
+        setState(() {
+          _m = response.body;
+        });
+      } else {
+        setState(() {
+          _m = "${response.statusCode}  ${response.reasonPhrase}";
+        });
+      }
+    }catch(error){
       setState(() {
-        _m = response.body;
-      });
-    } else {
-      setState(() {
-        _m = "${response.statusCode}  ${response.reasonPhrase}";
+        _m="$error";
       });
     }
+
   }
 }
