@@ -29,7 +29,6 @@ class _DummyApiExampleState extends State<DummyApiExample> {
             child: ListView(
               children: [
 
-                // 🔥 for loop
                 for (int i = 0; i < productList.length; i++)
                   Card(
                     child: ListTile(
@@ -63,7 +62,7 @@ class _DummyApiExampleState extends State<DummyApiExample> {
         var data = jsonDecode(response.body);
 
         setState(() {
-          productList = data["products"]; // 🔥 important
+          productList = data["products"];
         });
 
       } else {
