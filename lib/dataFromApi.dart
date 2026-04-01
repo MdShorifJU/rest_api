@@ -33,10 +33,19 @@ class _DatafromApiState extends State<DatafromApi> {
   }
 
   void getMessageFromAPi() async {
+
+    // Case-1
+    // String url = "https://dhakashoping.xyz/hello_api.php?name=Md Shorif&address=Bhola";
+    // var response = await http.get(Uri.parse(url));
+
+
+    //case-2
     String url = "https://dhakashoping.xyz/hello_api.php";
-
-    var response = await http.get(Uri.parse(url));
-
+    final Map<String,dynamic> queryParams = {
+      "name" : "Md Rajib",
+      "address" : "Dhaka"
+    };
+    var response = await http.get(Uri.parse(url).replace(queryParameters: queryParams));
     if (response.statusCode == 200) {
       setState(() {
         _m = response.body;
