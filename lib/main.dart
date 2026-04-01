@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rest_api/SignUpPage.dart';
 import 'package:rest_api/jsonDataFromAPI.dart';
+import 'package:rest_api/loginPage.dart';
 
 import 'dataFromApi.dart' show DatafromApi;
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: SignUpPage(),
+      home: LoginPage(),
     );
   }
 }
