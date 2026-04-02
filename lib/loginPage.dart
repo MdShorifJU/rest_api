@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:rest_api/forgotPassword.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -22,7 +23,6 @@ class _LoginPageState extends State<LoginPage> {
       backgroundColor: Colors.green,
       body: Stack(
         children: [
-
           Padding(
             padding: const EdgeInsets.only(top: 80, left: 20),
             child: Column(
@@ -54,14 +54,11 @@ class _LoginPageState extends State<LoginPage> {
               padding: const EdgeInsets.all(20),
               decoration: const BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(40),
-                ),
+                borderRadius: BorderRadius.vertical(top: Radius.circular(40)),
               ),
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-
                     const Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
@@ -122,7 +119,16 @@ class _LoginPageState extends State<LoginPage> {
                     Align(
                       alignment: Alignment.centerRight,
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return Forgotpassword();
+                              },
+                            ),
+                          );
+                        },
                         child: const Text("Forgot Password"),
                       ),
                     ),
@@ -140,20 +146,16 @@ class _LoginPageState extends State<LoginPage> {
                           );
 
                           if (result) {
-                            ScaffoldMessenger.of(
-                              context,
-                            ).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  "Login Successfully",
-                                ),
-                              ),
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text("Login Successfully")),
                             );
                           } else {
-                            ScaffoldMessenger.of(
-                              context,
-                            ).showSnackBar(
-                              SnackBar(content: Text("Login Failed! Create an Account")),
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  "Login Failed! Create an Account",
+                                ),
+                              ),
                             );
                           }
                         },
@@ -164,7 +166,10 @@ class _LoginPageState extends State<LoginPage> {
                             borderRadius: BorderRadius.circular(12),
                           ),
                         ),
-                        child: const Text("Login",style: TextStyle(color: Colors.white),),
+                        child: const Text(
+                          "Login",
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                     ),
                   ],
@@ -180,10 +185,7 @@ class _LoginPageState extends State<LoginPage> {
   Future<bool> loginMethod(String name, String pass) async {
     String url = "https://dhakashoping.xyz/login.php";
 
-    final Map<String, dynamic> queryParams = {
-      "name": name,
-      "password": pass
-    };
+    final Map<String, dynamic> queryParams = {"name": name, "password": pass};
 
     try {
       var response = await http.get(
@@ -205,7 +207,6 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 }
-
 
 //=======Backend=============
 // <?php

@@ -19,7 +19,6 @@ class _DummyApiExampleState extends State<DummyApiExample> {
       appBar: AppBar(title: Text("Dummy Products")),
       body: Column(
         children: [
-
           ElevatedButton(
             onPressed: fetchData,
             child: Text("Load Products"),
